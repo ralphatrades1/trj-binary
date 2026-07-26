@@ -7,19 +7,35 @@
 
 <h1>Login</h1>
 
-<form>
+<form onsubmit="login(event)">
 <label>Email</label><br>
-<input type="email" placeholder="Enter your email"><br><br>
+<input type="email" id="email" required><br><br>
 
 <label>Password</label><br>
-<input type="password" placeholder="Enter your password"><br><br>
+<input type="password" id="password" required><br><br>
 
 <button type="submit">Login</button>
 </form>
 
-<br>
+<p id="msg"></p>
 
-<a href="index.html">Back to Home</a>
+<script>
+function login(event){
+event.preventDefault();
+
+let email=document.getElementById("email").value;
+let password=document.getElementById("password").value;
+
+let savedEmail=localStorage.getItem("email");
+let savedPassword=localStorage.getItem("password");
+
+if(email===savedEmail && password===savedPassword){
+window.location.href="dashboard.html";
+}else{
+document.getElementById("msg").innerHTML="Invalid email or password.";
+}
+}
+</script>
 
 </body>
 </html>
