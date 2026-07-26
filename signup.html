@@ -1,35 +1,44 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Create Account</title>
+<title>Create Account</title>
 </head>
 <body>
 
 <h1>Create Account</h1>
 
-<form>
-    <label>Full Name</label><br>
-    <input type="text" placeholder="Enter your full name"><br><br>
+<form onsubmit="createAccount(event)">
 
-    <label>Email</label><br>
-    <input type="email" placeholder="Enter your email"><br><br>
+<label>Full Name</label><br>
+<input type="text" id="name" required><br><br>
 
-    <label>Password</label><br>
-    <input type="password" placeholder="Enter your password"><br><br>
+<label>Email</label><br>
+<input type="email" id="email" required><br><br>
 
-    <button type="button" onclick="createAccount()">Create Account</button>
+<label>Password</label><br>
+<input type="password" id="password" required><br><br>
 
-<script>
-function createAccount() {
-    alert("Account created successfully!");
-    window.location.href = "login.html";
-}
-</script>
+<button type="submit">Create Account</button>
+
 </form>
 
-<br>
+<script>
+function createAccount(event){
+event.preventDefault();
 
-<a href="index.html">Back to Home</a>
+let name = document.getElementById("name").value;
+let email = document.getElementById("email").value;
+let password = document.getElementById("password").value;
+
+localStorage.setItem("name", name);
+localStorage.setItem("email", email);
+localStorage.setItem("password", password);
+
+alert("Account created successfully!");
+
+window.location.href="login.html";
+}
+</script>
 
 </body>
 </html>
